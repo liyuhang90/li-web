@@ -4,12 +4,14 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   title: "Made By Li",
   description: "无锡地铁",
+  cleanUrls: true,
   themeConfig: {
     logo: '/logo.svg',
     // https://vitepress.dev/reference/default-theme-config
     outline: {
       label: '页面导航',
-    },
+      },
+    sidebarMenuLabel: '页面导航',
     docFooter: {
       prev: '上一页',
       next: '下一页',
