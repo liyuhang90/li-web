@@ -78,9 +78,12 @@ export default defineConfig({
             { text: '6号线简介', link: '/metro/line_6_intro' },
             { text: '6号线站点', link: '/metro/line_6_station' },
           ] },
+          { text: 'S2线', items: [
+            { text: 'S2线简介', link: '/metro/line_S2_intro' },
+            { text: 'S2线站点', link: '/metro/line_S2_station' },
+          ] },
           { text: '远期规划', items: [
             { text: '远期规划简介', link: '/metro/far_future_intro' },
-            { text: '远期规划S2线', link: '/metro/far_future_line_S2' },
             { text: '远期规划7号线', link: '/metro/far_future_line_7' },
             { text: '远期规划8号线', link: '/metro/far_future_line_8' },
             { text: '其它远期规划', link: '/metro/other_far_future' },
