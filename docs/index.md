@@ -12,7 +12,7 @@ hero:
   actions:
     - theme: brand
       text: 无锡地铁简介
-      link: /作者还没有做……
+      link: /metro/metro_index
     - theme: alt
       text: 我的学校
       link: https://xdgz.u-jy.cn/portal/home/

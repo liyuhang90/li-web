@@ -2,11 +2,39 @@ import { defineConfig } from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: "Made By Li, Designed By VitePress",
-  description: "A VitePress Site",
+  title: "Made By Li",
+  description: "无锡地铁",
   themeConfig: {
     logo: '/logo.svg',
     // https://vitepress.dev/reference/default-theme-config
+    outline: {
+      label: '页面导航',
+    },
+    docFooter: {
+      prev: '上一页',
+      next: '下一页',
+    },
+    search: {
+      provider: "local",
+      options: {
+          translations: {
+            button: {
+              buttonText: "搜索本页",
+              buttonAriaLabel: "搜索本页",
+            },
+          modal: {
+            noResultsText: "无结果",
+            resetButtonTitle: "清空输入",
+            displayDetails: "显示详细信息",
+            footer: {
+              selectText: "选择",
+              navigateText: "切换",
+              closeText: "关闭",
+            },
+          },
+        },
+      },
+    },
     nav: [
       { text: '主页', link: '/' },
       { text: '链接', items:[
@@ -17,10 +45,44 @@ export default defineConfig({
     ],
     sidebar: [
       {
-        text: 'Examples',
+        text: '无锡地铁',
         items: [
-          { text: 'Markdown Examples', link: '/markdown-examples' },
-          { text: 'Runtime API Examples', link: '/api-examples' }
+          { text: '引言', link: '/metro/metro_index'},
+          { text: '1号线', items: [
+            { text: '1号线简介', link: '/metro/line_1_intro' },
+            { text: '1号线站点明细', link: '/metro/line_1_station' },
+          ] },
+          { text: '2号线', items: [
+            { text: '2号线简介', link: '/metro/line_2_intro' },
+            { text: '2号线站点明细', link: '/metro/line_2_station' },
+          ] },
+          { text: '3号线', items: [
+            { text: '3号线简介', link: '/metro/line_3_intro' },
+            { text: '3号线站点明细', link: '/metro/line_3_station' },
+          ] },
+          { text: '4号线', items: [
+            { text: '4号线简介', link: '/metro/line_4_intro' },
+            { text: '4号线站点明细', link: '/metro/line_4_station' },
+          ] },
+          { text: 'S1线', items: [
+            { text: 'S1线简介', link: '/metro/line_S1_intro' },
+            { text: 'S1线站点', link: '/metro/line_S1_station' },
+          ] },
+          { text: '5号线', items: [
+            { text: '5号线简介', link: '/metro/line_5_intro' },
+            { text: '5号线站点', link: '/metro/line_5_station' },
+          ] },
+          { text: '6号线', items: [
+            { text: '6号线简介', link: '/metro/line_6_intro' },
+            { text: '6号线站点', link: '/metro/line_6_station' },
+          ] },
+          { text: '远期规划', items: [
+            { text: '远期规划简介', link: '/metro/far_future_intro' },
+            { text: '远期规划S2线', link: '/metro/far_future_line_S2' },
+            { text: '远期规划7号线', link: '/metro/far_future_line_7' },
+            { text: '远期规划8号线', link: '/metro/far_future_line_8' },
+            { text: '其它远期规划', link: '/metro/other_far_future' },
+          ] },
         ]
       }
     ],
