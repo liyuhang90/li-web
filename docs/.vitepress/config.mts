@@ -11,7 +11,7 @@ export default defineConfig({
     outline: {
       label: '页面导航',
       },
-    sidebarMenuLabel: '页面导航',
+    sidebarMenuLabel: '本页文章',
     docFooter: {
       prev: '上一页',
       next: '下一页',
