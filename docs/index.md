@@ -1,7 +1,7 @@
 ---
 # https://vitepress.dev/reference/default-theme-home-page
+title: 主页
 layout: home
-
 hero:
   name: "Li的主页"
   text: "Welcome"

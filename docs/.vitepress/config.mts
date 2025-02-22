@@ -1,13 +1,13 @@
 import { defineConfig } from 'vitepress'
-
-// https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "Made By Li",
   description: "无锡地铁",
   cleanUrls: true,
+  head: [
+    ['link', { rel: 'icon', href: '/Li.ico'}]
+  ],
   themeConfig: {
     logo: '/logo.svg',
-    // https://vitepress.dev/reference/default-theme-config
     outline: {
       label: '本页文章',
       },

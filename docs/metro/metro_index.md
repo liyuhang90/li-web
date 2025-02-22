@@ -1,4 +1,6 @@
-
+---
+ layout: doc
+---
 
 # 引言
 
@@ -8,7 +10,7 @@
 
 由于S1线以及后续的地铁线路站点大部分以所处道路命名，而1~4号线大部分以街道命名，因此只有1~4号线有站点明细，从S1线以后的线路不再制作站点明细，只注明英文名称和站台结构。
 
-特别鸣谢：[StudioMAX](https://v.douyin.com/iPBoPGUC/)提供数据参考；[随风潜入夜](https://zhuyuxuan.link/)提供网站搭建指导。
+特别鸣谢：[StudioMAX](https://v.douyin.com/iPBoPGUC/)提供数据参考；[随风潜入夜](https://github.com/ZhuYuxuan9302)提供网站搭建指导。
 
 感谢你的支持。
 
