@@ -4,16 +4,14 @@
       v-show="show"
       class="back-to-top"
       @click="scrollToTop"
-      @mouseover="isHover = true"
-      @mouseleave="isHover = false"
-      @touchstart="handleTouchStart"
-      @touchend="handleTouchEnd"
+      @mouseenter="showTooltip = true"
+      @mouseleave="showTooltip = false"
     >
-      <span class="tooltip" :class="{ 'tooltip-show': isHover }">回到顶部</span>
+      <span v-if="!isMobile" class="tooltip" :class="{ 'tooltip-show': showTooltip }">回到顶部</span>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
-        :class="{ 'icon-hover': isHover }"
+        :class="{ 'icon-hover': showTooltip }"
       >
         <path
           fill="currentColor"
@@ -28,37 +26,34 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 
 const show = ref(false)
-const isHover = ref(false)
+const showTooltip = ref(false)
+const isMobile = ref(false)
+
+const checkMobile = () => {
+  isMobile.value = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+}
 
 const scrollToTop = () => {
   window.scrollTo({
     top: 0,
     behavior: 'smooth'
   })
+  showTooltip.value = false
 }
 
 const handleScroll = () => {
   show.value = window.pageYOffset > 300
 }
 
-// 添加触摸事件处理
-const handleTouchStart = () => {
-  isHover.value = true
-}
-
-const handleTouchEnd = () => {
-  // 延迟关闭提示，以确保用户能看到提示内容
-  setTimeout(() => {
-    isHover.value = false
-  }, 500)
-}
-
 onMounted(() => {
+  checkMobile()
   window.addEventListener('scroll', handleScroll)
+  window.addEventListener('resize', checkMobile)
 })
 
 onUnmounted(() => {
   window.removeEventListener('scroll', handleScroll)
+  window.removeEventListener('resize', checkMobile)
 })
 </script>
 
@@ -78,13 +73,12 @@ onUnmounted(() => {
   color: white;
   transition: all 0.3s ease;
   z-index: 100;
-  /* 防止触摸时出现高亮 */
   -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 
-.back-to-top:hover {
-  background-color: #1565C0;
-  transform: translateY(-2px);
+.back-to-top:active {
+  transform: scale(0.95);
 }
 
 .back-to-top svg {
@@ -97,7 +91,6 @@ onUnmounted(() => {
   transform: translateY(-2px);
 }
 
-/* 提示框样式 */
 .tooltip {
   position: absolute;
   top: -40px;
@@ -112,10 +105,9 @@ onUnmounted(() => {
   visibility: hidden;
   transition: all 0.3s ease;
   white-space: nowrap;
-  pointer-events: none; /* 防止提示框影响点击 */
+  pointer-events: none;
 }
 
-/* 添加小三角 */
 .tooltip::after {
   content: '';
   position: absolute;
@@ -142,7 +134,6 @@ onUnmounted(() => {
   opacity: 0;
 }
 
-/* 移动端适配 */
 @media (max-width: 768px) {
   .back-to-top {
     right: 1rem;
