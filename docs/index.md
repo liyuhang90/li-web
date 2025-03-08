@@ -21,7 +21,7 @@ features:
   - icon:
       src: /计划.svg
     title: 远期规划
-    details: 完成无锡地铁线路、站点及参数简介。
+    details: 继续更新地铁信息，增添并完善更多网站功能。
   - icon:
       src: /无锡地铁.svg
     title: 无锡地铁官网
