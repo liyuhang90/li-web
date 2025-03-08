@@ -13,6 +13,7 @@ export default defineConfig({
       label: '本页文章',
     },
     sidebarMenuLabel: '页面导航',
+    returnToTopLabel: '回到顶部',
     docFooter: {
       prev: '上一页',
       next: '下一页',

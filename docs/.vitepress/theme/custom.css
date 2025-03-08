@@ -1,0 +1,22 @@
+:root {
+  --vp-home-hero-image-background-image: linear-gradient(
+    135deg,
+    #0396FF 10%,
+    #ABDCFF 100%
+  );
+  --vp-home-hero-image-filter: blur(72px);
+}
+
+/* 可选：调整透明度让背景更柔和 */
+.VPHero .image-bg {
+  opacity: 0.8;
+  transform: translate(-50%, -50%) scale(1.2);
+}
+/* .vitepress/theme/custom.css */
+:root {
+  --vp-home-hero-image-background-image: linear-gradient(
+    135deg,
+    #2196F3 10%,
+    #90CAF9 100%
+  );
+}
