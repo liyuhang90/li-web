@@ -50,7 +50,7 @@ const handleTouchEnd = () => {
   // 延迟关闭提示，以确保用户能看到提示内容
   setTimeout(() => {
     isHover.value = false
-  }, 1000)
+  }, 500)
 }
 
 onMounted(() => {
