@@ -4,14 +4,14 @@
       v-show="show"
       class="back-to-top"
       @click="scrollToTop"
-      @mouseenter="showTooltip = true"
-      @mouseleave="showTooltip = false"
     >
-      <span v-if="!isMobile" class="tooltip" :class="{ 'tooltip-show': showTooltip }">回到顶部</span>
+      <!-- 只在桌面端显示提示框 -->
+      <div class="tooltip-container">
+        <span class="tooltip">回到顶部</span>
+      </div>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
-        :class="{ 'icon-hover': showTooltip }"
       >
         <path
           fill="currentColor"
@@ -26,19 +26,12 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 
 const show = ref(false)
-const showTooltip = ref(false)
-const isMobile = ref(false)
-
-const checkMobile = () => {
-  isMobile.value = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
-}
 
 const scrollToTop = () => {
   window.scrollTo({
     top: 0,
     behavior: 'smooth'
   })
-  showTooltip.value = false
 }
 
 const handleScroll = () => {
@@ -46,14 +39,11 @@ const handleScroll = () => {
 }
 
 onMounted(() => {
-  checkMobile()
   window.addEventListener('scroll', handleScroll)
-  window.addEventListener('resize', checkMobile)
 })
 
 onUnmounted(() => {
   window.removeEventListener('scroll', handleScroll)
-  window.removeEventListener('resize', checkMobile)
 })
 </script>
 
@@ -74,40 +64,41 @@ onUnmounted(() => {
   transition: all 0.3s ease;
   z-index: 100;
   -webkit-tap-highlight-color: transparent;
-  touch-action: manipulation;
 }
 
-.back-to-top:active {
-  transform: scale(0.95);
+.back-to-top:hover {
+  background-color: #1565C0;
+  transform: translateY(-2px);
 }
 
 .back-to-top svg {
   width: 2rem;
   height: 2rem;
-  transition: transform 0.3s ease;
 }
 
-.icon-hover {
-  transform: translateY(-2px);
-}
-
-.tooltip {
+/* 提示框容器 */
+.tooltip-container {
   position: absolute;
   top: -40px;
   left: 50%;
   transform: translateX(-50%);
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* 提示框本身 */
+.tooltip {
   background-color: rgba(0, 0, 0, 0.7);
   color: white;
   padding: 6px 12px;
   border-radius: 4px;
   font-size: 14px;
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.3s ease;
   white-space: nowrap;
-  pointer-events: none;
+  position: relative;
 }
 
+/* 提示框小三角 */
 .tooltip::after {
   content: '';
   position: absolute;
@@ -119,11 +110,16 @@ onUnmounted(() => {
   border-color: rgba(0, 0, 0, 0.7) transparent transparent transparent;
 }
 
-.tooltip-show {
-  opacity: 1;
-  visibility: visible;
+/* 仅在桌面端显示提示框 */
+@media (hover: hover) {
+  .back-to-top:hover .tooltip-container {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
 }
 
+/* 淡入淡出动画 */
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.3s ease;
@@ -134,6 +130,7 @@ onUnmounted(() => {
   opacity: 0;
 }
 
+/* 移动端适配 */
 @media (max-width: 768px) {
   .back-to-top {
     right: 1rem;
@@ -145,6 +142,11 @@ onUnmounted(() => {
   .back-to-top svg {
     width: 1.5rem;
     height: 1.5rem;
+  }
+
+  /* 确保移动端不显示提示框 */
+  .tooltip-container {
+    display: none;
   }
 }
 </style>
