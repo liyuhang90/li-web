@@ -1,4 +1,3 @@
-<!-- .vitepress/theme/components/BackToTop.vue -->
 <template>
   <transition name="fade">
     <div
@@ -7,8 +6,9 @@
       @click="scrollToTop"
       @mouseover="isHover = true"
       @mouseleave="isHover = false"
+      @touchstart="handleTouchStart"
+      @touchend="handleTouchEnd"
     >
-      <!-- 添加提示文字 -->
       <span class="tooltip" :class="{ 'tooltip-show': isHover }">回到顶部</span>
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -41,6 +41,18 @@ const handleScroll = () => {
   show.value = window.pageYOffset > 300
 }
 
+// 添加触摸事件处理
+const handleTouchStart = () => {
+  isHover.value = true
+}
+
+const handleTouchEnd = () => {
+  // 延迟关闭提示，以确保用户能看到提示内容
+  setTimeout(() => {
+    isHover.value = false
+  }, 1000)
+}
+
 onMounted(() => {
   window.addEventListener('scroll', handleScroll)
 })
@@ -57,7 +69,7 @@ onUnmounted(() => {
   bottom: 2rem;
   width: 3.5rem;
   height: 3.5rem;
-  background-color: #1976D2; /* 修改为新的颜色 */
+  background-color: #1976D2;
   border-radius: 50%;
   cursor: pointer;
   display: flex;
@@ -66,10 +78,12 @@ onUnmounted(() => {
   color: white;
   transition: all 0.3s ease;
   z-index: 100;
+  /* 防止触摸时出现高亮 */
+  -webkit-tap-highlight-color: transparent;
 }
 
 .back-to-top:hover {
-  background-color: #1565C0; /* 修改为稍深的蓝色 */
+  background-color: #1565C0;
   transform: translateY(-2px);
 }
 
@@ -83,7 +97,7 @@ onUnmounted(() => {
   transform: translateY(-2px);
 }
 
-/* 添加提示文字样式 */
+/* 提示框样式 */
 .tooltip {
   position: absolute;
   top: -40px;
@@ -98,6 +112,7 @@ onUnmounted(() => {
   visibility: hidden;
   transition: all 0.3s ease;
   white-space: nowrap;
+  pointer-events: none; /* 防止提示框影响点击 */
 }
 
 /* 添加小三角 */
@@ -125,5 +140,20 @@ onUnmounted(() => {
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+  .back-to-top {
+    right: 1rem;
+    bottom: 1rem;
+    width: 3rem;
+    height: 3rem;
+  }
+
+  .back-to-top svg {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
 }
 </style>
