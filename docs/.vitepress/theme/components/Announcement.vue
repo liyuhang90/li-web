@@ -12,23 +12,25 @@
     </button>
 
     <!-- 公告弹窗 -->
-    <div v-if="isVisible" class="announcement-modal">
-      <div class="announcement-content">
-        <div class="announcement-header">
-          <h3>网站公告</h3>
-          <button class="close-btn" @click="closeAnnouncement">&times;</button>
-        </div>
-        <div class="announcement-body markdown-body">
-          <slot></slot>
+    <ClientOnly>
+      <div v-if="isVisible" class="announcement-modal">
+        <div class="announcement-content">
+          <div class="announcement-header">
+            <h3>网站公告</h3>
+            <button class="close-btn" @click="closeAnnouncement">&times;</button>
+          </div>
+          <div class="announcement-body markdown-body">
+            <slot></slot>
+          </div>
         </div>
       </div>
-    </div>
+    </ClientOnly>
   </div>
 </template>
 
 <script setup>
 import { ref, onMounted, computed } from 'vue'
-import { useRoute } from 'vitepress'
+import { useRoute, ClientOnly } from 'vitepress'
 
 // 从props接收是否启用公告的配置
 const props = defineProps({
@@ -54,12 +56,18 @@ const closeAnnouncement = () => {
 const checkAutoShow = () => {
   if (!props.isEnabled) return // 如果未启用，直接返回
   
-  const today = new Date().toDateString()
-  const lastShow = localStorage.getItem('lastAnnouncementShow')
-  
-  if (lastShow !== today) {
-    showAnnouncement()
-    localStorage.setItem('lastAnnouncementShow', today)
+  // 确保在客户端环境
+  if (typeof window !== 'undefined') {
+    const today = new Date().toDateString()
+    const lastShow = localStorage.getItem('lastAnnouncementShow')
+    
+    if (lastShow !== today) {
+      // 添加一个小延迟确保内容已经加载
+      setTimeout(() => {
+        showAnnouncement()
+        localStorage.setItem('lastAnnouncementShow', today)
+      }, 100)
+    }
   }
 }
 
@@ -73,7 +81,7 @@ onMounted(() => {
 <style scoped>
 .announcement-btn {
   position: fixed;
-  right: 20px;
+  left: 20px; /* 改为 left */
   bottom: 20px;
   padding: 10px 20px;
   background-color: #5672CD;
