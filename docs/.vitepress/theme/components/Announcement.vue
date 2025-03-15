@@ -79,9 +79,9 @@ onMounted(() => {
 <style scoped>
 .announcement-btn {
   position: fixed;
-  right: 0px;
-  bottom: 120px;
-  padding: 5px 10px;
+  right: 20px;
+  bottom: 20px;
+  padding: 10px 20px;
   background-color: #5672CD;
   color: white;
   border: none;
