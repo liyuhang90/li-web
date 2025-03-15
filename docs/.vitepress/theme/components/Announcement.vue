@@ -12,25 +12,23 @@
     </button>
 
     <!-- 公告弹窗 -->
-    <ClientOnly>
-      <div v-if="isVisible" class="announcement-modal">
-        <div class="announcement-content">
-          <div class="announcement-header">
-            <h3>网站公告</h3>
-            <button class="close-btn" @click="closeAnnouncement">&times;</button>
-          </div>
-          <div class="announcement-body markdown-body">
-            <slot></slot>
-          </div>
+    <div v-if="isVisible" class="announcement-modal">
+      <div class="announcement-content">
+        <div class="announcement-header">
+          <h3>网站公告</h3>
+          <button class="close-btn" @click="closeAnnouncement">&times;</button>
+        </div>
+        <div class="announcement-body markdown-body">
+          <slot></slot>
         </div>
       </div>
-    </ClientOnly>
+    </div>
   </div>
 </template>
 
 <script setup>
 import { ref, onMounted, computed } from 'vue'
-import { useRoute, ClientOnly } from 'vitepress'
+import { useRoute } from 'vitepress'
 
 // 从props接收是否启用公告的配置
 const props = defineProps({
@@ -81,9 +79,9 @@ onMounted(() => {
 <style scoped>
 .announcement-btn {
   position: fixed;
-  left: 20px; /* 改为 left */
-  bottom: 20px;
-  padding: 10px 20px;
+  right: 0px;
+  bottom: 120px;
+  padding: 5px 10px;
   background-color: #5672CD;
   color: white;
   border: none;
