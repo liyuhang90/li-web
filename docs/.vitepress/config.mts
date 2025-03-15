@@ -54,6 +54,7 @@ export default defineConfig({
         text: '无锡地铁',
         items: [
           { text: '引言', link: '/metro/metro_index' },
+          { text: '线路图', link: '/metro/map' },
           {
             text: '1号线', collapsed: true, items: [
               { text: '1号线简介', link: '/metro/line_1_intro' },
