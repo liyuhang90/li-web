@@ -11,7 +11,6 @@ export default {
   extends: DefaultTheme,
   Layout: () => {
     return h(DefaultTheme.Layout, null, {
-      'layout-top': () => h(Announcement),
       'layout-bottom': () => h(BackToTop)
     })
   },
