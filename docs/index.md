@@ -33,7 +33,7 @@ features:
     details: Li-feedback@outlook.com
 ---
 <Announcement :is-enabled="true">
-2025/3/21：已更新S1线简介以及站点信息。  
+2025/3/21：已更新S1线简介以及站点信息。<br>
 2025/3/15：已更新4号线和地铁线路图，添加了“公告”功能。
 </Announcement>
 
