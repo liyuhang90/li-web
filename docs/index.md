@@ -32,7 +32,7 @@ features:
     title: 反馈邮箱
     details: Li-feedback@outlook.com
 ---
-<Announcement :is-enabled="true">
+<Announcement :version="'0.0.2'">
 2025/3/21：已更新S1线简介以及站点信息。<br>
 2025/3/15：已更新4号线和地铁线路图，添加了“公告”功能。
 </Announcement>

@@ -1,7 +1,7 @@
 <!-- components/Announcement.vue -->
 <template>
-  <!-- 只有当 isEnabled 为 true 且在主页时才显示 -->
-  <div v-if="isEnabled && isHomePage">
+  <!-- 当在主页时显示 -->
+  <div v-if="isHomePage">
     <!-- 公告按钮 -->
     <button
       class="announcement-btn"
@@ -30,11 +30,10 @@
 import { ref, onMounted, computed } from 'vue'
 import { useRoute } from 'vitepress'
 
-// 从props接收是否启用公告的配置
 const props = defineProps({
-  isEnabled: {
-    type: Boolean,
-    default: true
+  version: {
+    type: String,
+    required: true
   }
 })
 
@@ -52,25 +51,22 @@ const closeAnnouncement = () => {
 
 // 检查是否需要自动显示公告
 const checkAutoShow = () => {
-  if (!props.isEnabled) return // 如果未启用，直接返回
-  
-  // 确保在客户端环境
   if (typeof window !== 'undefined') {
-    const today = new Date().toDateString()
-    const lastShow = localStorage.getItem('lastAnnouncementShow')
+    const lastVersion = localStorage.getItem('lastAnnouncementVersion')
+    const currentVersion = props.version
     
-    if (lastShow !== today) {
-      // 添加一个小延迟确保内容已经加载
+    // 当版本号不同时显示弹窗
+    if (lastVersion !== currentVersion) {
       setTimeout(() => {
         showAnnouncement()
-        localStorage.setItem('lastAnnouncementShow', today)
+        localStorage.setItem('lastAnnouncementVersion', currentVersion)
       }, 100)
     }
   }
 }
 
 onMounted(() => {
-  if (props.isEnabled && isHomePage.value) {
+  if (isHomePage.value) {
     checkAutoShow()
   }
 })
