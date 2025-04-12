@@ -6,6 +6,7 @@ import './style.css'
 import './custom.css' 
 import BackToTop from './components/BackToTop.vue'
 import Announcement from './components/Announcement.vue'
+import BilibiliVideo from './components/BilibiliVideo.vue'
 
 export default {
   extends: DefaultTheme,
@@ -17,5 +18,6 @@ export default {
   enhanceApp({ app, router, siteData }) {
     app.component('BackToTop', BackToTop)
     app.component('Announcement', Announcement)
+    app.component('BilibiliVideo', BilibiliVideo)
   }
 } satisfies Theme

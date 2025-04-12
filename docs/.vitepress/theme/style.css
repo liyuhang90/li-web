@@ -136,4 +136,11 @@
 .DocSearch {
   --docsearch-primary-color: var(--vp-c-brand-1) !important;
 }
-
+.bilibili-video {
+  filter: brightness(0.9);
+}
+@media (prefers-color-scheme: dark) {
+  .bilibili-video {
+    filter: brightness(0.8);
+  }
+}
