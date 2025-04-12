@@ -55,7 +55,7 @@ export default defineConfig({
       {
         text: '链接', items: [
           { text: 'MCJPG', link: 'https://mcjpg.org' },
-          { text: 'LobeChat', link: 'https://chat.mcjpg.org/chat' },
+          { text: 'LobeChat', link: 'https://chat.mcjpg.org' },
           { text: 'VitePress', link: 'https://vitepress.dev' }
         ]
       }
