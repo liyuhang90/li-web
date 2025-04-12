@@ -17,7 +17,7 @@ hero:
       link: /metro/metro_index
     - theme: brand
       text: 学校往事
-      link: /school/school
+      link: /school/school_index
 
 features:
   - icon:
