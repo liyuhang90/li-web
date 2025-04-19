@@ -2,9 +2,10 @@
   "rewrites": [
     {
       "source": "/(.*)",
-      "destination": "/index.html"
+      "destination": "/docs/index.html"
     }
   ],
+  "cleanUrls": true
   "headers": [
     {
       "source": "/(.*)",
