@@ -9,6 +9,14 @@ export default defineConfig({
       }
     }
   },
+  base: '/docs/',
+  vite: {
+    base: '/docs/', 
+    build: {
+      outDir: '../dist',
+      assetsDir: 'assets'
+    }
+  },
   title: "Made By Li",
   description: "由个人Li创建，一个兴趣结合生活的网站。",
   cleanUrls: true,
