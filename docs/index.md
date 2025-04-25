@@ -14,10 +14,10 @@ hero:
   actions:
     - theme: brand
       text: 无锡地铁简介
-      link: /metro/metro_index
+      link: /metro/metro_index/index
     - theme: brand
       text: 学校往事
-      link: /school/school_index
+      link: /school/school_index/index
 
 features:
   - icon:
