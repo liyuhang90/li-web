@@ -7,6 +7,7 @@ export default [
     {text:'2025年篮球班赛', items:[
         {text:"5班 vs 18班", link:'/school/vs18/index.md'},
         {text:"5班 vs 14班", link:'/school/vs14/index.md'},
-        {text:"5班 vs 15班", link:'/school/vs15/index.md'},
+        {text:"5班 vs 20班", link:'/school/vs20/index.md'},
+        {text:"5班 vs 8班", link:'/school/vs8/index.md'},
         ],},
 ]

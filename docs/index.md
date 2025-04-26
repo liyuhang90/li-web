@@ -34,7 +34,8 @@ features:
     title: 反馈邮箱
     details: Li-feedback@outlook.com
 ---
-<Announcement :version="'0.0.4'">
+<Announcement :version="'0.0.5'">
+2025-4-26：更新了两个班赛视频。<br>
 2025-4-12：新建了文章板块。<br>
 2025-3-29：优化了文章目录页结构。<br>
 2025-3-21：已更新S1线简介以及站点信息。<br>
