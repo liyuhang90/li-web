@@ -64,7 +64,7 @@ export default defineConfig({
      '/metro/': metroSidebar,
      '/school/': schoolSidebar,
     },
-    footer: { copyright: 'Copyright © 2025-present, Li' },
+    footer: { copyright: 'Copyright © 2025 Li' },
     lastUpdated: {
       text: '最后更新于',
       formatOptions: {
